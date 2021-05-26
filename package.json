@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node discord.js"
+    "start": "DISCORD_TOKEN=ODQ2MzgyODczNTgwOTI5MDg1.YKuteg.ZDAukw3vb-NnBWWCEA2NlxdUZ40 node discord.js"
   },
   "keywords": [],
   "author": "",
