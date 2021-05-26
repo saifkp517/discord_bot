@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const config = require('./config.json')
+const token = process.env.DISCORD_TOKEN;
 
 client.once('ready', ()=> {
   console.log('ready');
@@ -64,5 +64,5 @@ fetch('https://twitter.com/i/api/graphql/Kq7XqqyDGn4Ly7Yh0AhK9w/UserTweetsAndRep
   .catch(err => console.log(err));
 
 
-client.login(config.token)
+client.login(token)
 
