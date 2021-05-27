@@ -9,36 +9,58 @@ client.once('ready', ()=> {
 var fetch = require('node-fetch');
 
 //crypto data bot
-fetch('https://x.wazirx.com/wazirx-falcon/api/v2.0/crypto_rates', {
-  headers: {
-    'authority': 'x.wazirx.com',
-    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
-    'api-key': 'WRXPRODWn5Kc36$#%WYjguL;1oUYnD9ijiIHE7bk3r78%3#mFHJdik3n1Uafgib98*GI',
-    'sec-ch-ua-mobile': '?0',
-    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
-    'accept': '*/*',
-    'origin': 'https://wazirx.com',
-    'sec-fetch-site': 'same-site',
-    'sec-fetch-mode': 'cors',
-    'sec-fetch-dest': 'empty',
-    'referer': 'https://wazirx.com/',
-    'accept-language': 'en-US,en;q=0.9,bn;q=0.8'
-  }
-})
-  .then(res => res.json())
-  .then(data => {
 
-    client.on('message', message => {
-      if(message.content === '!doge'){
-	message.channel.send(data.doge.inr+'rs')
-      }
-      if(message.content === '!btc'){
-	message.channel.send(data.btc.inr+'rs')
+client.on('message', message => {
+  if(message.content === '!doge'){
+    fetch('https://x.wazirx.com/wazirx-falcon/api/v2.0/crypto_rates', {
+      headers: {
+	'authority': 'x.wazirx.com',
+	'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+	'api-key': 'WRXPRODWn5Kc36$#%WYjguL;1oUYnD9ijiIHE7bk3r78%3#mFHJdik3n1Uafgib98*GI',
+	'sec-ch-ua-mobile': '?0',
+	'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+	'accept': '*/*',
+	'origin': 'https://wazirx.com',
+	'sec-fetch-site': 'same-site',
+	'sec-fetch-mode': 'cors',
+	'sec-fetch-dest': 'empty',
+	'referer': 'https://wazirx.com/',
+	'accept-language': 'en-US,en;q=0.9,bn;q=0.8'
       }
     })
+      .then(res => res.json())
+      .then(data => {
+	message.channel.send(data.doge.inr+'rs')
+      })
+      .catch(err => console.log(err))
 
-  })
-  .catch(err => console.log(err))
+  }
+  if(message.content === '!btc'){
+        fetch('https://x.wazirx.com/wazirx-falcon/api/v2.0/crypto_rates', {
+	        headers: {
+		    'authority': 'x.wazirx.com',
+		    'sec-ch-ua': '" Not A;Brand";v="99", "Chromium";v="90", "Google Chrome";v="90"',
+		    'api-key': 'WRXPRODWn5Kc36$#%WYjguL;1oUYnD9ijiIHE7bk3r78%3#mFHJdik3n1Uafgib98*GI',
+		    'sec-ch-ua-mobile': '?0',
+		    'user-agent': 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36',
+		    'accept': '*/*',
+		    'origin': 'https://wazirx.com',
+		    'sec-fetch-site': 'same-site',
+		    'sec-fetch-mode': 'cors',
+		    'sec-fetch-dest': 'empty',
+		    'referer': 'https://wazirx.com/',
+		    'accept-language': 'en-US,en;q=0.9,bn;q=0.8'
+		        }
+	      })
+          .then(res => res.json())
+          .then(data => {
+	      message.channel.send(data.btc.inr+'rs')
+	          })
+          .catch(err => console.log(err))
+
+  }
+})
+
 
 
 //elon tweet bot
