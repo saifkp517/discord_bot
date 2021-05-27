@@ -102,12 +102,12 @@ client.on('message', message => {
 
 	if(test.startsWith('homeConversation')){
 	  const conversation = res.data.user.result.timeline.timeline.instructions[0].entries[i].content.items[0].item.itemContent.tweet.legacy.full_text;
-	  message.channel.send('hey' + conversation)
+	  message.channel.send(conversation)
 	}
 
 	if(test.startsWith('tweet')){
 	  const tweet = res.data.user.result.timeline.timeline.instructions[0].entries[i].content.itemContent.tweet.legacy.full_text;
-	  message.channel.send('hi'+tweet)
+	  message.channel.send(tweet)
 	}
 
       })
