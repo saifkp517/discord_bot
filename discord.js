@@ -30,6 +30,14 @@ client.on('message', message => {
     })
       .then(res => res.json())
       .then(data => {
+	let lastPrice = 0;
+	let price = data.doge.inr;
+	console.log(price + ' ')
+	let array = [price, lastPrice]
+	lastPrice = price 
+	console.log(lastPrice)
+	array.slice(1,1, lastPrice)
+	console.log(array)
 	message.channel.send(data.doge.inr+'rs')
       })
       .catch(err => console.log(err))
@@ -96,19 +104,9 @@ client.on('message', message => {
       .then(res => {
 
 	const data = res.data
-	const i = 0;
 
-	const test = data.user.result.timeline.timeline.instructions[0].entries[i].entryId;
-
-	if(test.startsWith('homeConversation')){
-	  const conversation = res.data.user.result.timeline.timeline.instructions[0].entries[i].content.items[0].item.itemContent.tweet.legacy.full_text;
-	  message.channel.send(conversation)
-	}
-
-	if(test.startsWith('tweet')){
-	  const tweet = res.data.user.result.timeline.timeline.instructions[0].entries[i].content.itemContent.tweet.legacy.full_text;
-	  message.channel.send(tweet)
-	}
+	const tweet = data.user.result.timeline.timeline.instructions[0].entries[0].content.metadata.conversationMetadata.allTweetIds[0]
+	message.channel.send(`https://twitter.com/elonmusk/status/`+tweet)
 
       })
 
