@@ -8,7 +8,7 @@ client.once('ready', ()=> {
 
 var fetch = require('node-fetch');
 
-//crypto data bot
+//crypto data url
 
 client.on('message', message => {
   if(message.content === '!doge'){
@@ -30,15 +30,7 @@ client.on('message', message => {
     })
       .then(res => res.json())
       .then(data => {
-	let lastPrice = 0;
-	let price = data.doge.inr;
-	console.log(price + ' ')
-	let array = [price, lastPrice]
-	lastPrice = price 
-	console.log(lastPrice)
-	array.slice(1,1, lastPrice)
-	console.log(array)
-	message.channel.send(data.doge.inr+'rs')
+	message.channel.send(data.doge.inr)
       })
       .catch(err => console.log(err))
 
@@ -62,7 +54,7 @@ client.on('message', message => {
     })
       .then(res => res.json())
       .then(data => {
-	message.channel.send(data.btc.inr+'rs')
+	message.channel.send(data.btc.usdt+'$')
       })
       .catch(err => console.log(err))
 
@@ -70,8 +62,7 @@ client.on('message', message => {
 })
 
 
-
-//elon tweet bot
+//elon tweet url
 client.on('message', message => {
 
   if(message.content === '!goodbot'){
