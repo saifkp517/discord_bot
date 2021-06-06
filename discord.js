@@ -96,7 +96,8 @@ client.on('message', message => {
 
 	const data = res.data
 
-	const tweet = data.user.result.timeline.timeline.instructions[0].entries[0].sortIndex
+	const tweet = data.user.result.timeline.timeline.instructions[0].entries[0].content.metadata.conversationMetadata.allTweetIds[0];
+	
 	message.channel.send(`https://twitter.com/elonmusk/status/`+tweet)
 
       })
